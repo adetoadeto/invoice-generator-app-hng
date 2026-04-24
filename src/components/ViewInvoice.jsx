@@ -33,6 +33,8 @@ const ViewInvoice = () => {
         setEditOpen(true)
     }
 
+    const grandTotal =  invoice.lists.map(item => item.qty * item.price).reduce((curr, value) => curr + value, 0)
+    const paymentDue = new Date((new Date(Date.now() + invoice.paymentTerms * 24 * 60 * 60 * 1000))).toISOString().split("T")[0];
 
     return (
         <>
@@ -76,7 +78,7 @@ const ViewInvoice = () => {
                             </div>
                             <div>
                                 <p>Payment Due</p>
-                                <strong>{invoice.invoiceDate}</strong>
+                                <strong>{paymentDue}</strong>
                             </div>
                         </div>
                         <div>
@@ -106,22 +108,24 @@ const ViewInvoice = () => {
                                 </div>
                                 <strong className="fourth">Total</strong>
                             </div>
-                            <div className="billing-info-content">
+                            {invoice.lists.map(item => (
+                                <div className="billing-info-content" key={item.id}>
                                 <div>
-                                    <p className="first">Placeholder</p>
+                                    <p className="first">{item.name}</p>
                                     <div>
-                                        <p className="second">1</p>
+                                        <p className="second">{item.qty}</p>
                                         <span className="multiply">X</span>
-                                        <p className="third">£ 00.00</p>
+                                        <p className="third">£ {item.price}</p>
                                     </div>
                                 </div>
-                                <strong>£ 00.00</strong>
+                                <strong>£ {item.qty * item.price}</strong>
                             </div>
+                            ))}
 
                         </div>
                         <div className="grand-total">
                             <p>Amount Due</p>
-                            <p>£ 00.00</p>
+                            <p>£ {grandTotal}</p>
                         </div>
                     </div>
                 </div>

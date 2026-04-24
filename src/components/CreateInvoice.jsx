@@ -72,6 +72,11 @@ const CreateInvoice = () => {
         ]);
     };
 
+    const handleRemoveItem = (listId) => {
+        const newList = lists.filter(item => item.id !== listId)
+        setLists(newList);
+    };
+
     const handleChange = (index, field, value) => {
         const updated = [...lists];
         updated[index][field] = value;
@@ -172,7 +177,7 @@ const CreateInvoice = () => {
                         <div className="item-lists">
                             <p>Item List</p>
                             <div className="list">
-                                {/* first list */}
+
                                 {lists.map((item, index) => (
                                     <div className="item flex" key={index}>
                                         <div className="item-name">
@@ -201,7 +206,7 @@ const CreateInvoice = () => {
                                             <div className="total">
                                                 <label htmlFor="total">Total</label>
                                                 <div className="flex">
-                                                    <p>{item.qty * item.price} </p> <i className="fa-solid fa-trash"></i>
+                                                    <p>{item.qty * item.price} </p> <p onClick={() => handleRemoveItem(item.id)}><i className="fa-solid fa-trash" ></i></p>
                                                 </div>
                                             </div>
                                         </div>
