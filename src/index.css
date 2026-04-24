@@ -237,12 +237,12 @@ main {
   align-items: center;
 }
 
-.invoice-heading-filter__dropdown>div input[type="checkbox"] {
+.invoice-heading-filter__dropdown>div input[type="radio"] {
   accent-color: var(--light-700);
 }
 
 .invoice-heading-filter__dropdown>div:hover,
-.invoice-heading-filter__dropdown>div input[type="checkbox"]:hover,
+.invoice-heading-filter__dropdown>div input[type="radio"]:hover,
 .invoice-heading-filter__dropdown>div label:hover {
   cursor: pointer;
 }
