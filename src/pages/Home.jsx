@@ -3,16 +3,18 @@ import EmptyInvoice from "../components/EmptyInvoice"
 import Invoice from "../components/Invoice"
 
 const Home = () => {
+    const invoices = JSON.parse(localStorage.getItem("database")) || [];
+
   return (
      <>
         <InvoiceHeading />
-        {/* <EmptyInvoice /> */}
+      
+        {(invoices.length > 0) ?
         <section className="invoices">
-          <Invoice />
-          <Invoice />
-          <Invoice />
-          <Invoice />
+          {invoices.map(item => <Invoice key={item.id} item={item}/>)}
         </section>
+        :   <EmptyInvoice />
+        }
       </>
   )
 }

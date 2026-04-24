@@ -84,6 +84,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -125,6 +126,8 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  z-index: 3;
 }
 
 nav>div {
@@ -215,7 +218,7 @@ main {
   font: inherit;
   position: absolute;
   top: 90%;
-  left: 60%;
+  left: 57%;
   height: fit-content;
   width: 150px;
   padding: 15px;
@@ -299,6 +302,11 @@ main {
   font-weight: var(--font-weight-bold);
 }
 
+.invoice-empty--content p span:hover {
+  cursor: pointer;
+}
+
+
 /* Invoices (full content) */
 .invoices {
   margin-top: 60px;
@@ -347,6 +355,7 @@ main {
 .invoice-name {
   width: 250px;
   overflow: hidden;
+  word-break: break-all;
 }
 
 .invoice-price {
@@ -596,24 +605,22 @@ main {
 }
 
 /* Delete Modal */
-dialog {
+.delete-modal {
   width: 400px;
   height: fit-content;
   padding: 4rem 3rem;
   border-radius: 7px;
   background-color: var(--bg-modal-color);
-  display: flex;
-  flex-direction: column;
   margin: auto;
   border: none;
   font: inherit;
 }
 
-dialog::backdrop {
+.delete-modal::backdrop {
   background: rgba(0, 0, 0, 0.63);
 }
 
-dialog h2 {
+.delete-modal h2 {
   font-weight: var(--font-weight-bold);
   font-size: var(--font-heading-m-size);
   line-height: var(--font-heading-m-line-height);
@@ -621,20 +628,19 @@ dialog h2 {
   color: var(--heading-color-I);
 }
 
-dialog p {
+.delete-modal p {
   margin: 20px 0;
   color: var(--light-500);
   line-height: 2;
-
 }
 
-dialog>div {
+.delete-modal>div {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-dialog>div button {
+.delete-modal>div button {
   font: inherit;
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.75px;
@@ -642,21 +648,143 @@ dialog>div button {
   padding: 13px 25px;
   border: none;
 }
-dialog>div button:hover {
+
+.delete-modal>div button:hover {
   cursor: pointer;
- 
+
 }
 
-dialog>div button:first-of-type {
+.delete-modal>div button:first-of-type {
   background-color: var(--modal-btn-bg-color-I);
   color: var(--text-color-III);
 }
 
-dialog>div button:last-of-type {
+.delete-modal button:last-of-type {
   background-color: var(--red-300);
   color: var(--white);
 }
 
+/* Edit and update form */
+.invoice-form {
+  top: 0;
+  color: var(--light-300);
+  border-radius: 10px;
+  background-color: var(--light-50);
+  width: 40%;
+  left: 40px;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.invoice-form-content {
+   padding: 2rem 1.5rem 1.5rem 3rem;
+}
+
+.invoice-form-content h2 {
+  color: var(--dark-700);
+}
+
+.invoice-form-content>div {
+  margin-top: 1.5rem;
+  width: auto;
+}
+
+.invoice-form-content>div>p:first-of-type {
+  font-weight: var(--font-weight-bold);
+}
+
+.invoice-form-content>div .bill {
+  color: var(--light-700);
+}
+
+.invoice-form-content label {
+  display: block;
+  margin: 1rem 0 0.3rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.invoice-form-content input,
+.invoice-form-content select {
+  border: 1px solid var(--light-100);
+  border-radius: 3px;
+  padding: 8px 12px;
+  color: var(--dark-700);
+  font-weight: var(--font-weight-bold);
+  display: block;
+  width: 100%;
+  background-color: transparent;
+}
+
+.invoice-form-content .flex {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.invoice-form-content .item-lists .flex {
+  gap: 0.4rem;
+}
+
+.invoice-form-content .total p {
+    padding: 8px 8px 8px 0;
+}
+
+.invoice-form-content .add-more-item {
+  background-color: var(--light-100);
+  font: inherit;
+  margin-top: 0.8rem;
+  width: 100%;
+  padding: 0.5rem 0;
+  border-radius: 15px;
+  border: none;
+  color: var(--light-500);
+  font-weight: var(--font-weight-bold);
+}
+
+.invoice-form-actions {
+  border-top-right-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem 1.2rem 3rem;
+  background-color: var(--white);
+}
+.invoice-form-actions button {
+  border-radius: 20px;
+  border: none;
+  font: inherit;
+  padding: 10px 20px;
+  font-weight: var(--font-weight-bold);
+}
+.invoice-form-actions > div {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.invoice-form-actions > button:nth-child(1) {
+  background-color: var(--light-50);
+  color: var(--light-500);
+}
+
+.invoice-form-actions > div button:nth-child(1) {
+  background-color: var(--dark-300);
+  color: var(--light-300);
+}
+.invoice-form-actions > div button:nth-child(2) {
+  background-color: var(--light-900);
+  color: var(--white);
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+
+}
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;
@@ -721,7 +849,6 @@ dialog>div button:last-of-type {
   }
 
   .invoice-heading {
-    background-color: red;
     gap: 2rem;
     flex-wrap: wrap;
   }
@@ -732,7 +859,6 @@ dialog>div button:last-of-type {
 
   .invoice-heading-filter__dropdown {
     right: 150px;
-
   }
 
   .invoice-heading__add p:before {

@@ -1,15 +1,21 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
-const Invoice = () => {
+const Invoice = ({item}) => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (id) => {
+    navigate(`/view-invoice/${id}`)
+  }
+
   return (
-    <div className="invoice">
-      <strong className="invoice-id"><span>#</span>RT3080</strong>
-      <span className="invoice-date">Due 19 Aug 2021</span>
-      <p className="invoice-name">Jensen Juanghhhhhhhhhhhhhhhhhhhhhhhhh</p>
+    <div className="invoice" onClick={()=>handleNavigation(item.id)}>
+      <strong className="invoice-id"><span>#</span>RT{item.id}</strong>
+      <span className="invoice-date">{item.invoiceDate}</span>
+      <p className="invoice-name">{item.clientName}</p>
       <strong className="invoice-price">$1,4569999999</strong>
       <div>
-        <p className="invoice-status paid"><i className="fa-solid fa-circle"></i>Pending</p>
-        <Link to="/view-invoice/1"><i class="fa-solid fa-angle-right"></i></Link>
+        <p className={`invoice-status ${item.status}`}><i className="fa-solid fa-circle"></i>{item.status}</p>
+        <Link to={`/view-invoice/${item.id}`}><i class="fa-solid fa-angle-right"></i></Link>
       </div>
     </div>
   )
