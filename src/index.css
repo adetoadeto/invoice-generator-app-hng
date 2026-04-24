@@ -58,6 +58,7 @@
   --bg-color-II: var(--white);
   --bg-color-III: var(--light-50);
   --bg-color-IV: var(--bluey);
+  --bg-color-V: var(--white);
   --bg-modal-color: white;
   --text-color-I: var(--dark-700);
   --text-color-II: var(--dark-500);
@@ -65,6 +66,10 @@
   --heading-color-I: var(--dark-700);
   --modal-btn-bg-color-I: var(--light-50);
   --modal-btn-bg-color-II: var(--red-300);
+  --border-color: var(--light-100);
+  --input-bg-color: transparent;
+  --more-bg-color: #373b531a;
+  --more-text-color: var(--light-500);
 }
 
 .dark-theme {
@@ -72,6 +77,7 @@
   --bg-color-II: var(--dark-100);
   --bg-color-III: var(--dark-50);
   --bg-color-IV: var(--dark-700);
+  --bg-color-V: transparent;
   --bg-modal-color: var(--dark-300);
   --text-color-I: var(--light-50);
   --text-color-II: var(--light-300);
@@ -79,6 +85,10 @@
   --heading-color-I: var(--white);
   --modal-btn-bg-color-I: var(--dark-100);
   --modal-btn-bg-color-II: var(--red-100);
+  --border-color: transparent;
+  --input-bg-color: var(--dark-300);
+  --more-bg-color: var(--dark-100);
+  --more-text-color: var(--light-100)
 }
 
 * {
@@ -406,8 +416,8 @@ main {
 }
 
 .invoice-status.draft {
-  color: var(--bluey);
-  background-color: #373b5310;
+  color: var(--light-300);
+  background-color: #373b531a;
 }
 
 /* View Invoice */
@@ -675,7 +685,7 @@ main {
   top: 0;
   color: var(--light-300);
   border-radius: 10px;
-  background-color: var(--light-50);
+  background-color: var(--bg-color);
   width: 35%;
   left: 40px;
   height: 100%;
@@ -683,7 +693,6 @@ main {
   z-index: 2;
   overflow-y: scroll;
   overflow-x: hidden;
-
 }
 
 .invoice-form-content {
@@ -715,14 +724,14 @@ main {
 
 .invoice-form-content input,
 .invoice-form-content select {
-  border: 1px solid var(--light-100);
+  border: 1px solid var(--border-color);
   border-radius: 3px;
   padding: 8px 12px;
-  color: var(--dark-700);
+  color: var(--text-color-I);
   font-weight: var(--font-weight-bold);
   display: block;
   width: 100%;
-  background-color: transparent;
+  background-color: var(--input-bg-color);
 }
 
 .invoice-form-content input:focus,
@@ -762,18 +771,19 @@ main {
 }
 
 .invoice-form-content .add-more-item {
-  background-color: #33d6a015;
+  background-color: var(--more-bg-color);
   font: inherit;
   margin-top: 1rem;
   width: 100%;
   padding: 0.7rem 0;
   border-radius: 15px;
   border: none;
-  color: var(--light-500);
+  color: var(--more-text-color);
   font-weight: var(--font-weight-bold);
+  text-align: center;
 }
 
-.invoice-form-content .add-more-item:hover {
+.light-theme .invoice-form-content .add-more-item:hover {
   background-color: var(--light-100);
 }
 
@@ -782,7 +792,7 @@ main {
   display: flex;
   justify-content: space-between;
   padding: 1.2rem 1.5rem 1.2rem 3rem;
-  background-color: var(--white);
+  background-color: var(--bg-color-V);
   flex-wrap: wrap;
   gap: 1rem;
 }
