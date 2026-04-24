@@ -26,18 +26,16 @@ const DeleteModal = ({ ref , invoiceId}) => {
         navigate("/")
     }
 
-    return createPortal (
-    <dialog ref={dialog} className="delete-modal dark-theme">
+return(
+    <dialog ref={dialog} className="delete-modal">
         <h2>Confirm Deletion</h2>
         <p>Are you sure you want to delete invoice <span>#XM{invoiceId}?</span> This action cannot be undone</p>
         <div>
             <button onClick={handleCloseModal}>Cancel</button>
             <button onClick={handleDeleteInvoice}>Delete</button>
         </div>
-    </dialog>,
-    document.getElementById("modal")
-    )
-
+    </dialog>
+)
 }
 
 export default DeleteModal

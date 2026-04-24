@@ -58,7 +58,7 @@
   --bg-color-II: var(--white);
   --bg-color-III: var(--light-50);
   --bg-color-IV: var(--bluey);
-  --bg-modal-color: var(--white);
+  --bg-modal-color: white;
   --text-color-I: var(--dark-700);
   --text-color-II: var(--dark-500);
   --text-color-III: var(--light-500);
@@ -101,10 +101,15 @@ body {
   letter-spacing: var(--font-body-spacing);
 }
 
+/* general */
 a {
   text-decoration: none;
   font: inherit;
   color: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 .container {
@@ -608,7 +613,7 @@ main {
 .delete-modal {
   width: 400px;
   height: fit-content;
-  padding: 4rem 3rem;
+  padding: 2rem;
   border-radius: 7px;
   background-color: var(--bg-modal-color);
   margin: auto;
@@ -637,6 +642,7 @@ main {
 .delete-modal>div {
   display: flex;
   align-items: center;
+  justify-content: end;
   gap: 10px;
 }
 
@@ -670,7 +676,7 @@ main {
   color: var(--light-300);
   border-radius: 10px;
   background-color: var(--light-50);
-  width: 40%;
+  width: 35%;
   left: 40px;
   height: 100%;
   position: absolute;
@@ -678,8 +684,9 @@ main {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
 .invoice-form-content {
-   padding: 2rem 1.5rem 1.5rem 3rem;
+  padding: 2rem 1.5rem 1.5rem 3rem;
 }
 
 .invoice-form-content h2 {
@@ -701,7 +708,7 @@ main {
 
 .invoice-form-content label {
   display: block;
-  margin: 1rem 0 0.3rem;
+  margin: 1.2rem 0 0.3rem;
   font-weight: var(--font-weight-medium);
 }
 
@@ -717,6 +724,28 @@ main {
   background-color: transparent;
 }
 
+.invoice-form-content input:focus,
+.invoice-form-content select:focus {
+  outline: none;
+  border: 1px solid var(--light-700);
+  caret-color: var(--light-700);
+}
+
+.invoice-form-content>div>div:hover {
+  color: var(--light-700);
+  cursor: pointer;
+}
+
+.invoice-form-content input:hover {
+  border: 1px solid var(--light-700);
+}
+
+.invoice-form-content input::placeholder {
+  color: var(--light-300);
+  font: inherit;
+  font-size: 11px;
+}
+
 .invoice-form-content .flex {
   display: flex;
   gap: 0.8rem;
@@ -728,19 +757,23 @@ main {
 }
 
 .invoice-form-content .total p {
-    padding: 8px 8px 8px 0;
+  padding: 8px 8px 8px 0;
 }
 
 .invoice-form-content .add-more-item {
-  background-color: var(--light-100);
+  background-color: #33d6a015;
   font: inherit;
-  margin-top: 0.8rem;
+  margin-top: 1rem;
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 0.7rem 0;
   border-radius: 15px;
   border: none;
   color: var(--light-500);
   font-weight: var(--font-weight-bold);
+}
+
+.invoice-form-content .add-more-item:hover {
+  background-color: var(--light-100);
 }
 
 .invoice-form-actions {
@@ -749,7 +782,14 @@ main {
   justify-content: space-between;
   padding: 1.2rem 1.5rem 1.2rem 3rem;
   background-color: var(--white);
+  flex-wrap: wrap;
+  gap: 1rem;
 }
+
+.invoice-form-actions#edit {
+  justify-content: end;
+}
+
 .invoice-form-actions button {
   border-radius: 20px;
   border: none;
@@ -757,22 +797,34 @@ main {
   padding: 10px 20px;
   font-weight: var(--font-weight-bold);
 }
-.invoice-form-actions > div {
+
+.invoice-form-actions>div {
   display: flex;
   gap: 0.5rem;
   align-items: center;
 }
 
-.invoice-form-actions > button:nth-child(1) {
+.invoice-form-actions>button:nth-child(1) {
   background-color: var(--light-50);
   color: var(--light-500);
 }
 
-.invoice-form-actions > div button:nth-child(1) {
+.invoice-form-actions>div button:nth-child(1) {
   background-color: var(--dark-300);
   color: var(--light-300);
 }
-.invoice-form-actions > div button:nth-child(2) {
+
+.invoice-form-actions>div button:nth-child(2) {
+  background-color: var(--light-900);
+  color: var(--white);
+}
+
+.invoice-form-actions#edit button:nth-child(1) {
+  color: var(--light-700);
+
+}
+
+.invoice-form-actions#edit button:nth-child(2) {
   background-color: var(--light-900);
   color: var(--white);
 }
@@ -785,6 +837,7 @@ main {
   display: block;
 
 }
+
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;
@@ -841,6 +894,17 @@ main {
   .billing-info .first {
     width: 200px;
   }
+
+  .invoice-form {
+    width: 85%;
+    left: 0;
+    top: 10%;
+  }
+
+  .invoice-form-content {
+    padding: 2rem 2.5rem;
+  }
+
 }
 
 @media (max-width: 768px) {
@@ -975,6 +1039,24 @@ main {
     flex-wrap: wrap;
     gap: 1rem;
   }
+
+  .invoice-form {
+    width: 100%;
+  }
+
+  .invoice-form-content {
+    padding: 1.5rem;
+  }
+
+  .invoice-form-content .flex {
+    display: block;
+  }
+
+  .invoice-form-content input {
+    width: 100%;
+    display: block;
+  }
+
 }
 
 @media (max-width: 320px) {

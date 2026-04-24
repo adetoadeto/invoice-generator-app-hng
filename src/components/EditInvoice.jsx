@@ -15,17 +15,12 @@ const EditInvoice = () => {
     const [items, setItems] = useState([])
 
     const invoice = invoices.find(item => item.id == id)
-    console.log(id, invoice)
-
-    const handleStatus = (e, status) => {
-        setStatus(status)
-    }
 
     const handleStoreData = (e) => {
         const formData = new FormData(formRef.current)
         const body = {
             id: id,
-            status,
+            status: invoice.status,
             vendorAddress: formData.get("vendor-address"),
             vendorCity: formData.get("vendor-city"),
             vendorPostCode: formData.get("vendor-post-code"),
@@ -181,9 +176,9 @@ const EditInvoice = () => {
                         </button>
                     </div>
 
-                    <div className="invoice-form-actions">
+                    <div className="invoice-form-actions" id="edit">
                         <button onClick={handleCloseModal}>Discard</button>
-                        <button type="submit" onClick={() => handleStatus("done")}>Save Changes</button>
+                        <button type="submit">Save Changes</button>
                     </div>
                 </form>
 

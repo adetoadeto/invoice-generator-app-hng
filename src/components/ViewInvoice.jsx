@@ -106,40 +106,20 @@ const ViewInvoice = () => {
                             </div>
                             <div className="billing-info-content">
                                 <div>
-                                    <p className="first">Banner design</p>
+                                    <p className="first">Placeholder</p>
                                     <div>
                                         <p className="second">1</p>
                                         <span className="multiply">X</span>
-                                        <p className="third">£ 156.60</p>
+                                        <p className="third">£ 00.00</p>
                                     </div>
                                 </div>
-                                <strong>£ 156.00</strong>
+                                <strong>£ 00.00</strong>
                             </div>
 
-                            <div className="billing-info-content">
-                                <div>
-                                    <p className="first">Banner design</p>
-                                    <div>
-                                        <p className="second">1</p>
-                                        <p className="third">£ 156.60</p>
-                                    </div>
-                                </div>
-                                <strong className="fourth">£ 156.00</strong>
-                            </div>
-                            <div className="billing-info-content">
-                                <div>
-                                    <p className="first">Banner designlllllll</p>
-                                    <div>
-                                        <p className="second">10000</p>
-                                        <p className="third">£ 15699999000000.60</p>
-                                    </div>
-                                </div>
-                                <strong className="fourth">£ 15600000000000000000.00</strong>
-                            </div>
                         </div>
                         <div className="grand-total">
                             <p>Amount Due</p>
-                            <p>£ 556.00</p>
+                            <p>£ 00.00</p>
                         </div>
                     </div>
                 </div>
