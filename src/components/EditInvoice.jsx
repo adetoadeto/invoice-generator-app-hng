@@ -47,7 +47,7 @@ const EditInvoice = () => {
     }
 
     const handleCloseModal = () => {
-        localStorage.setItem("editIsOpen", false)
+        localStorage.setItem("editIsOpen", JSON.stringify(false))
         setEditOpen(false)
     }
 
@@ -165,8 +165,8 @@ const EditInvoice = () => {
                                     <div className="total">
                                         <label htmlFor="total">Total</label>
                                         <div className="flex">
-                                            <p>156.00</p>
-                                            <i class="fa-solid fa-trash"></i>
+                                            <p>00.00</p>
+                                            <i className="fa-solid fa-trash"></i>
                                         </div>
                                     </div>
                                 </div>

@@ -18,7 +18,7 @@ const CreateInvoice = () => {
     }
 
     const handleCloseModal = () => {
-        localStorage.setItem("asideOpen", false)
+        localStorage.setItem("asideOpen", JSON.stringify(false))
         setAsideOpen(false)
     }
 
@@ -176,8 +176,8 @@ const CreateInvoice = () => {
                                         <div className="total">
                                             <label htmlFor="total">Total</label>
                                             <div className="flex">
-                                                <p>156.00</p>
-                                                <i class="fa-solid fa-trash"></i>
+                                                <p>00.00</p>
+                                                <i className="fa-solid fa-trash"></i>
                                             </div>
                                         </div>
                                     </div>

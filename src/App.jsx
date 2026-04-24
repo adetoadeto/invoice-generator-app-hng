@@ -3,23 +3,23 @@ import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import ViewInvoice from "./components/ViewInvoice";
 import CreateInvoice from "./components/CreateInvoice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const App = () => {
   const asideIsOpen = JSON.parse(localStorage.getItem("asideOpen")) || false;
-  const lightTheme = localStorage.getItem("isLightTheme")
+  const lightTheme = JSON.parse(localStorage.getItem("lightTheme")) ?? true
   
-  const [isLight, setIsLight] = useState(lightTheme || true)
-  
+  const [isLight, setIsLight] = useState(lightTheme)
+
   function handleSelectedTheme() {
       setIsLight(prevState => !prevState)
-      localStorage.setItem("isLightTheme", isLight)
+      localStorage.setItem("lightTheme", JSON.stringify(!isLight))
     }
 
   return (
     <div className={`container ${isLight ? "light-theme" : "dark-theme"}`}>
       <Router>
-        <NavBar onTheme= {handleSelectedTheme} light={isLight}/>
+        <NavBar toggleTheme= {handleSelectedTheme} light={isLight}/>
         {asideIsOpen && <CreateInvoice />}
         <main>
           <Routes>

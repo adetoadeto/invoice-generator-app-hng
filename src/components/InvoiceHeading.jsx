@@ -6,7 +6,7 @@ const InvoiceHeading = ({ handleFilter, invoiceTotal }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleShowAside = () => {
-    localStorage.setItem("asideOpen", true)
+    localStorage.setItem("asideOpen", JSON.stringify(true))
     setAsideOpen(true)
   }
 
@@ -26,8 +26,8 @@ const InvoiceHeading = ({ handleFilter, invoiceTotal }) => {
           {invoiceTotal > 0 ? <p>There {plural1} {invoiceTotal} total {plural2}</p> : <p>No invoices</p>}
         </div>
         <div>
-          <p className="invoice-heading-filter"><span></span> <i class="fa-solid fa-angle-down" onClick={handleShowDropdown}></i></p>
-          <button className="invoice-heading__add" onClick={handleShowAside}><i class="fa-solid fa-circle-plus"></i> <p></p></button>
+          <p className="invoice-heading-filter"><span></span> <i className="fa-solid fa-angle-down" onClick={handleShowDropdown}></i></p>
+          <button className="invoice-heading__add" onClick={handleShowAside}><i className="fa-solid fa-circle-plus"></i> <p></p></button>
           {dropdownOpen && <div className="invoice-heading-filter__dropdown">
             <div>
               <input type="radio" name="filterStatus" id="all" value="all" onChange={(event) => handleFilter(event)} />

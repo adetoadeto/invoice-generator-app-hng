@@ -15,7 +15,7 @@ const Invoice = ({item}) => {
       <strong className="invoice-price">$0.00</strong>
       <div>
         <p className={`invoice-status ${item.status}`}><i className="fa-solid fa-circle"></i>{item.status}</p>
-        <Link to={`/view-invoice/${item.id}`}><i class="fa-solid fa-angle-right"></i></Link>
+        <Link to={`/view-invoice/${item.id}`}><i className="fa-solid fa-angle-right"></i></Link>
       </div>
     </div>
   )

@@ -40,7 +40,7 @@ const ViewInvoice = () => {
             {editOpen && <EditInvoice />}
             <section className="view-invoice">
                 <Link to="/" className="view-invoice-return">
-                    <i class="fa-solid fa-angle-left"></i>
+                    <i className="fa-solid fa-angle-left"></i>
                     <p>Go back</p>
                 </Link>
                 <div className="view-invoice-heading">

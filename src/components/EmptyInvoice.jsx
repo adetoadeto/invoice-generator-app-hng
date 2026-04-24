@@ -7,7 +7,7 @@ const EmptyInvoice = () => {
     const [asideOpen, setAsideOpen] = useState(false);
 
     const handleShowAside = () => {
-        localStorage.setItem("asideOpen", true)
+        localStorage.setItem("asideOpen", JSON.stringify(true))
         setAsideOpen(true)
     }
     
