@@ -7,9 +7,12 @@ const CreateInvoice = () => {
 
     const asideIsOpen = JSON.parse(localStorage.getItem("asideOpen"));
 
+    const [lists, setLists] = useState([
+        { id: Date.now(), name: "", qty: "", price: "" }
+    ]);
+
     const [asideOpen, setAsideOpen] = useState(true);
     const [status, setStatus] = useState("draft")
-    const [items, setItems] = useState([])
 
     const navigate = useNavigate();
 
@@ -45,7 +48,7 @@ const CreateInvoice = () => {
             invoiceDate: formData.get("invoice-date"),
             paymentTerms: formData.get("payment-terms"),
             projectDescription: formData.get("project-description"),
-            lists: items
+            lists,
         }
 
         let newDatabase = []
@@ -62,10 +65,23 @@ const CreateInvoice = () => {
         alert("Operation successful! Close modal and reload page to view changes")
     }
 
+    const handleAddItem = () => {
+        setLists([
+            ...lists,
+            { id: Date.now(), name: "", qty: "", price: "" }
+        ]);
+    };
+
+    const handleChange = (index, field, value) => {
+        const updated = [...lists];
+        updated[index][field] = value;
+        setLists(updated);
+    };
+
     return (
         <>
             {(asideOpen || asideIsOpen) && <aside className="invoice-form">
-                <form  ref={formRef} onSubmit={handleStoreData}>
+                <form ref={formRef} onSubmit={handleStoreData}>
                     <div className="invoice-form-content">
                         <h2>New Invoice</h2>
 
@@ -149,7 +165,7 @@ const CreateInvoice = () => {
 
                             <div>
                                 <label htmlFor="project-description">Project Description</label>
-                                <input type="text" name="project-description" maxLength="30" required placeholder="e.g Graphic Design Service"/>
+                                <input type="text" name="project-description" maxLength="30" required placeholder="e.g Graphic Design Service" />
                             </div>
                         </div>
 
@@ -157,36 +173,43 @@ const CreateInvoice = () => {
                             <p>Item List</p>
                             <div className="list">
                                 {/* first list */}
-                                <div className="item flex">
-                                    <div className="item-name">
-                                        <label htmlFor="item-name">Item Name</label>
-                                        <input type="text" name="item-name" required />
-                                    </div>
-                                    <div className="flex">
-                                        <div className="qty">
-                                            <label htmlFor="qty">Qty</label>
-                                            <input type="text" name="qty" required />
+                                {lists.map((item, index) => (
+                                    <div className="item flex" key={index}>
+                                        <div className="item-name">
+                                            <label htmlFor="item-name">Item Name</label>
+                                            <input type="text" name="item-name" required
+                                                onChange={(e) =>
+                                                    handleChange(index, "name", e.target.value)
+                                                } />
                                         </div>
+                                        <div className="flex">
+                                            <div className="qty">
+                                                <label htmlFor="qty">Qty</label>
+                                                <input type="number" name="qty" min="0" required onChange={(e) =>
+                                                    handleChange(index, "qty", e.target.value)
+                                                } />
+                                            </div>
 
-                                        <div className="price">
-                                            <label htmlFor="price">Price</label>
-                                            <input type="text" name="price" required />
-                                        </div>
+                                            <div className="price">
+                                                <label htmlFor="price">Price</label>
+                                                <input type="number" name="price" min="0" required
+                                                    onChange={(e) =>
+                                                        handleChange(index, "price", e.target.value)
+                                                    } />
+                                            </div>
 
-                                        <div className="total">
-                                            <label htmlFor="total">Total</label>
-                                            <div className="flex">
-                                                <p>00.00</p>
-                                                <i className="fa-solid fa-trash"></i>
+                                            <div className="total">
+                                                <label htmlFor="total">Total</label>
+                                                <div className="flex">
+                                                    <p>{item.qty * item.price} </p> <i className="fa-solid fa-trash"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                {/* second list */}
+                                ))}
                             </div>
-                            <button className="add-more-item">+ Add New Item
-                            </button>
+                            <p className="add-more-item" onClick={handleAddItem}>+ Add New Item
+                            </p>
                         </div>
                     </div>
                     <div className="invoice-form-actions" id="create">
