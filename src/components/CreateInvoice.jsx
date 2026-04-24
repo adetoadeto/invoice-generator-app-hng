@@ -14,7 +14,6 @@ const CreateInvoice = () => {
     const navigate = useNavigate();
 
     const handleStatus = (status) => {
-
         setStatus(status)
     }
 
@@ -59,6 +58,8 @@ const CreateInvoice = () => {
         newDatabase.push(body)
 
         localStorage.setItem("database", JSON.stringify(newDatabase))
+
+        alert("Operation successful! Close modal and reload page to view changes")
     }
 
     return (

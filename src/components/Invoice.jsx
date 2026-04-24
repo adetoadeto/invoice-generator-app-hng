@@ -12,7 +12,7 @@ const Invoice = ({item}) => {
       <strong className="invoice-id"><span>#</span>RT{item.id}</strong>
       <span className="invoice-date">{item.invoiceDate}</span>
       <p className="invoice-name">{item.clientName}</p>
-      <strong className="invoice-price">$1,4569999999</strong>
+      <strong className="invoice-price">$0.00</strong>
       <div>
         <p className={`invoice-status ${item.status}`}><i className="fa-solid fa-circle"></i>{item.status}</p>
         <Link to={`/view-invoice/${item.id}`}><i class="fa-solid fa-angle-right"></i></Link>

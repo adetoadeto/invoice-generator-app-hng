@@ -120,6 +120,7 @@ button {
   justify-content: space-between;
   background-color: var(--bg-color);
   color: var(--text-color-I);
+   position: relative;
 }
 
 /* Navbar */
@@ -131,7 +132,6 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
   z-index: 3;
 }
 
@@ -683,6 +683,7 @@ main {
   z-index: 2;
   overflow-y: scroll;
   overflow-x: hidden;
+
 }
 
 .invoice-form-content {

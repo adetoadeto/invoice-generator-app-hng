@@ -42,6 +42,8 @@ const EditInvoice = () => {
         invoices[invoiceIndex] = body
 
         localStorage.setItem("database", JSON.stringify(invoices))
+
+        alert("Operation successful! Close modal and reload page to view changes")
     }
 
     const handleCloseModal = () => {
