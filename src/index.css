@@ -425,7 +425,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  color: var(--text-color-II);
+  color: var(--light-300);
 }
 
 .view-invoice-return {
